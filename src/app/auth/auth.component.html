@@ -1,0 +1,23 @@
+<div class="row d-flex justify-content-center pt-5">
+
+  <div class="col-6">
+    <div class="form-group">
+      <label for="">Login</label>
+      <input 
+        type="text" 
+        class="form-control"
+        [(ngModel)]="login"
+      >
+    </div>
+  </div>
+
+  <div class="col-12"></div>
+
+  <div class="col-6">
+    <button 
+      class="btn btn-primary btn-block"
+      (click)="auth()"
+    >Login</button>
+  </div>
+
+</div>

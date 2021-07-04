@@ -1,0 +1,66 @@
+<div class="row pt-5 justify-content-between" style="min-height: 100vh;">
+
+  <div class="col-12">
+    <div class="w-100">
+      <button 
+        class="btn btn-primary mr-2"
+        [routerLink]="['/dialogues']"
+      >Dialogues</button>
+      <button 
+        class="btn btn-primary"
+        [routerLink]="['/users']"
+      >Users</button>
+    </div>
+
+    <h1 class="mt-5">Chat with user</h1>
+  </div>
+
+  <div class="col-12 d-flex flex-column-reverse" style="height: 50vh; overflow-y: scroll;">
+    <div 
+      *ngFor="let msg of messages"
+      class="row"
+      [ngClass]="{
+        'justify-content-end': msg.user_id === myId
+      }"
+    >
+      <div class="col-10">
+        <div 
+          class="alert"
+          [ngClass]="{
+            'alert-light': msg.user_id !== myId,
+            'alert-primary text-right': msg.user_id === myId
+          }"
+        >
+          <p class="text-success mb-0" style="font-size: 0.8rem;">{{ msg.login }}</p>
+          <p class="text-dark" style="font-size: 1.1rem;">{{ msg.message }}</p>
+          <p class="text-secondary" style="font-size: 0.7rem;">{{ getDate(msg.created) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="row">
+      
+      <div class="col-12">
+        <div class="form-group">
+          <textarea 
+            class="form-control" 
+            placeholder="Message..."
+            [(ngModel)]="message"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button 
+          type="button" 
+          class="btn btn-primary btn-block"
+          (click)="sendMessage()"
+        >Send</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
